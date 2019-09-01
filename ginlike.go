@@ -1,7 +1,6 @@
 package ginlike
 
 import (
-	"fmt"
 	"net/http"
 )
 
@@ -33,7 +32,6 @@ func (engine *Engine) GET(path string, handlers HandlerFunc) {
 }
 
 func (engine *Engine) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("serveHTTP", r.URL.Path)
 
 	if err := engine.routerMap[r.URL.Path]; err != nil {
 		var ctx Context
