@@ -31,6 +31,7 @@ func (engine *Engine) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	if err := engine.routerMap[r.URL.Path]; err != nil {
 		var ctx Context
 		ctx.writemem.Reset(w)
+		ctx.reset()
 		engine.routerMap[r.URL.Path](&ctx)
 	}
 }
